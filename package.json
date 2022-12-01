@@ -1,0 +1,26 @@
+{
+  "name": "calcblq",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NlCoelho/calcBlq.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NlCoelho/calcBlq/issues"
+  },
+  "homepage": "https://github.com/NlCoelho/calcBlq#readme",
+  "dependencies": {
+    "jquery": "^3.6.1",
+    "next": "^13.0.5",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
+}

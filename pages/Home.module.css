@@ -1,0 +1,78 @@
+.container{
+    font-family: Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 1.4rem;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgb(50, 50, 80);
+    
+}
+
+.corpo{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.titulo{
+    font-size: 1.2rem;
+    display: flex;
+    justify-content: center;
+    color: azure;
+    text-transform: uppercase;
+    
+}
+
+.input {
+    width: 45vw;
+    text-align: center;
+    height: 3rem;
+    border-color: black;
+    border-radius: 5px;
+    font-size: 1.4rem;
+    margin: 5px;
+}
+
+.inputPH{
+    width: 45vw;
+    
+}
+
+.inputs{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    
+}
+
+.spans{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.span{
+    width: 45vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    height: 3rem;
+    margin: 0;
+    border-color: black;
+    border-radius: 5px;
+    border-style: solid;
+    border-width: 2px;
+    margin: 5px;
+}
+.container hr{
+    color: black;
+    width: 100vw;
+    margin-bottom: 25px;
+}
+
+.corpo hr{
+    color: black;
+    width: 100vw;
+    margin: 25px 0;
+}
+
