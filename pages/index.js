@@ -11,9 +11,6 @@ export default function Home() {
         [], { nome: "PH1", max: "Máx", min: "Mín", n: "Nominal" },
         { nome: "PH2", max: "Máx", min: "Mín", n: "Nominal" }]
 
-
-
-
     function fChange() {
         var soma =parseFloat(document.getElementById(cb).value) + parseFloat(document.getElementById(altPadrao).value ) - parseFloat(document.getElementById(esp).value)
         var somaPH1 = soma + parseFloat(document.getElementById(ph1).value)
@@ -36,6 +33,12 @@ export default function Home() {
         
     }
 
+    function btEnter(event) {
+        if(event.keyCode==13){
+            let elr=document.activeElement
+            elr.blur()
+        } 
+    }
 
     function Contador() {
         const [contador, setContador] = useState(0)
@@ -78,7 +81,7 @@ export default function Home() {
                         <input id={ph2} onChange={fChange} className={Homecss.input + " " + Homecss.inputPH} type="number" step=".01" placeholder={ph2} min="20" defaultValue="35.70" />
                     </label>
                     <label>{ph1}
-                        <input id={ph1} onChange={fChange} className={Homecss.input + " " + Homecss.inputPH} type="number" step=".01" placeholder={ph2} min="20" defaultValue="35.70" />
+                        <input id={ph1} onKeyDown={btEnter} onChange={fChange} className={Homecss.input + " " + Homecss.inputPH} type="number" step=".01" placeholder={ph2} min="20" defaultValue="35.70" />
                     </label>
                 </div>
 
