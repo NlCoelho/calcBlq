@@ -1,10 +1,21 @@
 .container{
     font-family: Calibri, 'Trebuchet MS', sans-serif;
     font-size: 1.4rem;
-    width: 100vw;
+    width: 415px;
+    max-height: 680px;
     height: 100vh;
+    color: #fff;
     background-color: rgb(50, 50, 80);
+    margin: 0;
+    padding: 0;
     
+}
+
+.body {
+    margin: 0px;
+    padding: 0px;
+    border-style: solid;
+    border-color: rgb(50, 50, 80);
 }
 
 .corpo{
@@ -17,41 +28,28 @@
     font-size: 1.2rem;
     display: flex;
     justify-content: center;
-    color: azure;
+    height: 3.8rem;
     text-transform: uppercase;
     
 }
 
-.input {
+.input{
     width: 45vw;
+    max-width: 180px;
     text-align: center;
     height: 3rem;
     border-color: black;
     border-radius: 5px;
     font-size: 1.4rem;
     margin: 5px;
-}
-
-.inputPH{
-    width: 45vw;
-    
-}
-
-.inputs{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    
-}
-
-.spans{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
+    margin-bottom: 12px;
 }
 
 .span{
+    color: rgba(12, 12, 12, 0.466);
+    font-weight: 500;
     width: 45vw;
+    max-width: 180px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -64,15 +62,41 @@
     border-width: 2px;
     margin: 5px;
 }
+
+
+.spans{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    margin: 0px 4px;
+}
+
+.labels{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.container label{
+    
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
 .container hr{
     color: black;
     width: 100vw;
     margin-bottom: 25px;
+    max-width: 420px;
+    
 }
 
 .corpo hr{
     color: black;
     width: 100vw;
     margin: 25px 0;
+    max-width: 420px;
 }
 
