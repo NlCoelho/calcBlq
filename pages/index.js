@@ -1,87 +1,121 @@
-import { useState } from 'react'
+//import { useEffect } from 'react';
 import Homecss from './Home.module.css'
+
 
 export default function Home() {
 
+    /*useEffect(() => {
+        window.onload = function () {
+           
+        }
+    }, [])
 
+    if(typeof window !== "undefined"){
+        
+    } */
 
-    var cb = "Curso de Bloqueio", tol = "Tolerância", altPadrao = "Altura do Padrão", esp = "Esp. do Material", ph1 = "Ponto Plano PH1", ph2 = "Ponto Plano  PH2"
+    var titleCB = "Curso de Bloqueio", titleTol = "Tolerância", titleAltPadrao = "Altura do Padrão", titleEsp = "Esp. do Material", titlePH1 = "Ponto Plano PH1", titlePH2 = "Ponto Plano  PH2"
 
     var ph = [
         [], { nome: "PH1", max: "Máx", min: "Mín", n: "Nominal" },
         { nome: "PH2", max: "Máx", min: "Mín", n: "Nominal" }]
 
     function fChange() {
-        var soma =parseFloat(document.getElementById(cb).value) + parseFloat(document.getElementById(altPadrao).value ) - parseFloat(document.getElementById(esp).value)
-        var somaPH1 = soma + parseFloat(document.getElementById(ph1).value)
-        var somaPH2 = soma + parseFloat(document.getElementById(ph2).value)
-        var tolerancia = parseFloat(document.getElementById(tol).value)
         
-        document.getElementById(ph[1].nome + ph[1].min).textContent =  parseFloat(somaPH1.toFixed(2)) + parseFloat(tolerancia.toFixed(2))
-        document.getElementById(ph[1].nome + ph[1].n).textContent =  parseFloat(somaPH1.toFixed(2))
-        document.getElementById(ph[1].nome + ph[1].max).textContent =  parseFloat(somaPH1.toFixed(2)) - parseFloat(tolerancia.toFixed(2))
+        var elCB = document.getElementById(titleCB)
+        elCB.type = "text"
+        elCB.value = parseFloat(elCB.value).toFixed(2)
 
-        document.getElementById(ph[2].nome + ph[2].min).textContent =  parseFloat(somaPH2.toFixed(2)) + parseFloat(tolerancia.toFixed(2))
-        document.getElementById(ph[2].nome + ph[2].n).textContent =  parseFloat(somaPH2.toFixed(2))
-        document.getElementById(ph[2].nome + ph[2].max).textContent =  parseFloat(somaPH2.toFixed(2)) - parseFloat(tolerancia.toFixed(2))
-        
+        var elTol = document.getElementById(titleTol)
+        elTol.type = "text"
+        elTol.value = parseFloat(elTol.value).toFixed(2)
+
+        var elAltPadrao = document.getElementById(titleAltPadrao)
+        elAltPadrao.type = "text"
+        elAltPadrao.value = parseFloat(elAltPadrao.value).toFixed(2)
+
+        var elEsp = document.getElementById(titleEsp)
+        elEsp.type = "text"
+        elEsp.value = parseFloat(elEsp.value).toFixed(2)
+
+        var elPH1 = document.getElementById(titlePH1)
+        elPH1.type = "text"
+        elPH1.value = parseFloat(elPH1.value).toFixed(2)
+
+        var elPH2 = document.getElementById(titlePH2)
+        elPH2.type = "text"
+        elPH2.value = parseFloat(elPH2.value).toFixed(2)
+
+        var cb = parseFloat(elCB.value)
+        var tol = parseFloat(elTol.value)
+        var altPadrao = parseFloat(elAltPadrao.value)
+        var esp = parseFloat(elEsp.value)
+        var ph1 = parseFloat(elPH1.value)
+        var ph2 = parseFloat(elPH2.value)
+
+        var soma = cb + altPadrao - esp
+        var somaPH1 = soma + ph1
+        var somaPH2 = soma + ph2
+
+        document.getElementById(ph[1].nome + ph[1].min).textContent = (somaPH1 + tol).toFixed(2)
+        document.getElementById(ph[1].nome + ph[1].n).textContent = somaPH1.toFixed(2)
+        document.getElementById(ph[1].nome + ph[1].max).textContent = (somaPH1 - tol).toFixed(2)
+
+        document.getElementById(ph[2].nome + ph[2].min).textContent = (somaPH2 + tol).toFixed(2)
+        document.getElementById(ph[2].nome + ph[2].n).textContent = somaPH2.toFixed(2)
+        document.getElementById(ph[2].nome + ph[2].max).textContent = (somaPH2 - tol).toFixed(2)
+
         const el = document.querySelectorAll("span")
         for (let i = 0; i < el.length; i++) {
             el[i].style.color = "#000";
             el[i].style.fontWeight = "700";
-          }
-        
+        }
+
     }
 
     function btEnter(event) {
-        if(event.keyCode==13){
-            let elr=document.activeElement
+        if (event.keyCode == 13) {
+            let elr = document.activeElement
+            var elements = document.querySelectorAll("input")
+            for (let i = 0; i < elements.length - 1; i++) {
+                if (elr == elements[i]) {
+                    elements[i + 1].focus()
+                }
+            }
             elr.blur()
-        } 
+        }
     }
 
-    function Contador() {
-        const [contador, setContador] = useState(0)
-
-        function adicionaContador() {
-            setContador(contador + ph1)
-        }
-        //return(
-        //   <div>
-        //     <div>{contador}</div>
-        //   <button onClick={adicionaContador}>Mais</button>
-        // </div>
-        // )
+    function typeNum() {
+        document.activeElement.type = "number"
     }
 
     return (
 
         <div className={Homecss.container}>
-            <Contador />
-
             <div className={Homecss.titulo}>
                 <h2>Calculadora de Bloqueio</h2>
             </div>
             <hr />
             <div className={Homecss.corpo}>
                 <div className={Homecss.labels}>
-                    <label>{cb}
-                        <input id={cb} onChange={fChange} className={Homecss.input} type="number" step=".01" placeholder="3.5" min="2" max="5" defaultValue="3.5" />
+                    <label>{titleCB}
+                        <input id={titleCB} onFocus={typeNum} onKeyDown={btEnter} onBlur={fChange} className={Homecss.input} type="text" step=".01" min="2" max="5" defaultValue="3.50" />
                     </label>
-                    <label>{tol}
-                        <input id={tol} onChange={fChange} className={Homecss.input} type="number" step=".05" placeholder="0.5" min="0" max="1" defaultValue="0.5" />
+                    <label>{titleTol}
+                        <input id={titleTol} onFocus={typeNum} onKeyDown={btEnter} onBlur={fChange} className={Homecss.input} type="text" step=".05" min="0" max="1" defaultValue="0.50" />
                     </label>
-                    <label>{altPadrao}
-                        <input id={altPadrao} onChange={fChange} className={Homecss.input} type="number" step=".01" placeholder={altPadrao} defaultValue="10.08" />
+                    <label>{titleAltPadrao}
+                        <input id={titleAltPadrao} onFocus={typeNum} onKeyDown={btEnter} onBlur={fChange} className={Homecss.input} type="text" step=".01" defaultValue="10.03" />
                     </label>
-                    <label>{esp}
-                        <input id={esp} onChange={fChange} className={Homecss.input} type="number" step=".05" placeholder={esp} min="2" max="5" defaultValue="2.75" />
+                    <label>{titleEsp}
+                        <input id={titleEsp} onFocus={typeNum} onKeyDown={btEnter} onBlur={fChange} className={Homecss.input} type="text" step=".05" min="2" max="5" defaultValue="2.75" />
                     </label>
-                    <label>{ph2}
-                        <input id={ph2} onChange={fChange} className={Homecss.input + " " + Homecss.inputPH} type="number" step=".01" placeholder={ph2} min="20" defaultValue="35.70" />
+                    <label>{titlePH2}
+                        <input id={titlePH2} onFocus={typeNum} onKeyDown={btEnter} onBlur={fChange} className={Homecss.input + " " + Homecss.inputPH} type="text" step=".01" min="20" defaultValue="35.70" />
                     </label>
-                    <label>{ph1}
-                        <input id={ph1} onKeyDown={btEnter} onChange={fChange} className={Homecss.input + " " + Homecss.inputPH} type="number" step=".01" placeholder={ph2} min="20" defaultValue="35.70" />
+                    <label>{titlePH1}
+                        <input id={titlePH1} onFocus={typeNum} onKeyDown={btEnter} onBlur={fChange} className={Homecss.input + " " + Homecss.inputPH} type="text" step=".01" min="20" defaultValue="35.70" />
                     </label>
                 </div>
 
