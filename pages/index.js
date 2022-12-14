@@ -38,17 +38,43 @@ export default function Home() {
     if (typeof window !== "undefined") {
         const puts = document.querySelectorAll("input")
         puts.forEach(function (e) {
-            e.addEventListener("focus", () => { e.selectionStart = e.value.length })
+            e.addEventListener("focus", () => {
+                e.selectionStart = e.value.length
+                const el = document.querySelectorAll("span")
+                for (let i = 0; i < el.length; i++) {
+                    el[i].style.color = "#fff";
+                    el[i].style.fontWeight = "700";
+                }
+            })
             e.addEventListener("keyup", (dig) => {
                 inputFocus(e, dig)
             })
             e.addEventListener("blur", () => {
-                fCalc()
+                inputFormat(e)
+                Calc()
             })
         })
     }
 
-    function fCalc() {
+    function inputFormat(el) {
+        let val = []
+        val = el.value.split("")
+
+        if (el.id == titleCB || el.id == titleEsp) {
+            while (val.length > 4) {
+                val.shift()
+            }
+            if (val.join("") < 1) {
+                el.value = val.join("") * 10
+
+            } else {
+                el.value = val.join("")
+
+            }
+        }
+    }
+
+    function Calc() {
 
         var elCB = document.getElementById(titleCB)
         elCB.value = parseFloat(elCB.value).toFixed(2)
@@ -87,9 +113,17 @@ export default function Home() {
         document.getElementById(ph[2].n).textContent = somaPH2.toFixed(2)
         document.getElementById(ph[2].max).textContent = (somaPH2 - tol).toFixed(2)
 
+
+        function getColorRandom(min, max) {
+            min = Math.ceil(min);
+            max = Math.floor(max);
+            return Math.floor(Math.random() * (max - min) + min);
+        }
+
+        const cor = getColorRandom(521092, 321092)
         const el = document.querySelectorAll("span")
         for (let i = 0; i < el.length; i++) {
-            el[i].style.color = "#3560f0";
+            el[i].style.color = "#" + cor;
             el[i].style.fontWeight = "700";
         }
 
@@ -115,6 +149,11 @@ export default function Home() {
 
 
     function inputFocus(e, dig) {
+        const el = document.querySelectorAll("span")
+        for (let i = 0; i < el.length; i++) {
+            el[i].style.color = "#fff";
+
+        }
         var memo = [], valor = ""
         if (dig.keyCode == 13) {
             var elements = document.querySelectorAll("input")
