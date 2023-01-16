@@ -44,6 +44,7 @@ export default function Home() {
                 for (let i = 0; i < el.length; i++) {
                     el[i].style.color = "#fff";
                     el[i].style.fontWeight = "700";
+                    
                 }
             })
             e.addEventListener("keyup", (dig) => {
@@ -113,17 +114,17 @@ export default function Home() {
         document.getElementById(ph[2].n).textContent = somaPH2.toFixed(2)
         document.getElementById(ph[2].max).textContent = (somaPH2 - tol).toFixed(2)
 
-
+/*
         function getColorRandom(min, max) {
             min = Math.ceil(min);
             max = Math.floor(max);
             return Math.floor(Math.random() * (max - min) + min);
         }
 
-        const cor = getColorRandom(521092, 321092)
+        const cor = getColorRandom(521092, 321092)*/
         const el = document.querySelectorAll("span")
         for (let i = 0; i < el.length; i++) {
-            el[i].style.color = "#" + cor;
+            el[i].style.color = "green";
             el[i].style.fontWeight = "700";
         }
 
