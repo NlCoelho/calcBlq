@@ -47,7 +47,8 @@
 
 .span{
     color: #fff;
-    font-weight: 500;
+    font-size: 1.6rem;
+    font-weight: 100;
     width: 45vw;
     max-width: 180px;
     display: flex;
@@ -63,8 +64,8 @@
     margin: 5px;
     opacity: 1;
     transition-property: color;
-    transition-duration: 2s;
-    transition-delay: 1s;
+    transition-duration: 1.2s;
+    transition-delay: 0.5s;
 }
 
 

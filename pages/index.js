@@ -39,7 +39,7 @@ export default function Home() {
         const puts = document.querySelectorAll("input")
         puts.forEach(function (e) {
             e.addEventListener("focus", () => {
-                e.selectionStart = e.value.length
+                //e.selectionStart = e.value.length
                 const el = document.querySelectorAll("span")
                 for (let i = 0; i < el.length; i++) {
                     el[i].style.color = "#fff";
@@ -124,7 +124,7 @@ export default function Home() {
         const cor = getColorRandom(521092, 321092)*/
         const el = document.querySelectorAll("span")
         for (let i = 0; i < el.length; i++) {
-            el[i].style.color = "green";
+            el[i].style.color = "black";
             el[i].style.fontWeight = "700";
         }
 
